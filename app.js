@@ -57,6 +57,18 @@ app.put('/put/:id', (req, res) => {
     res.send(users);
 })
 
+app.delete('/delete/:id', (req, res) => {
+    let id = req.params.id;
+    let deletedUser;
+    for (let index = 0; index < users.length; index++) {
+        const element = users[index];
+        if (element.id == id) {
+            deletedUser = users.pop(element);
+        }
+    }
+    res.send(deletedUser);
+})
+
 let port = process.env.PORT || '3002';
 
 
