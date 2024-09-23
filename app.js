@@ -1,6 +1,11 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 
+
+function generateId() {
+    return uuidv4();
+}
+
 const app = express();
 
 app.use(express.json());
@@ -34,6 +39,7 @@ app.get('/get/:id', (req, res) => {
 
 app.post('/post', (req, res) => {
     let user = req.body;
+    user.id = generateId();
     users.push(user);
     res.send(users);
 })
